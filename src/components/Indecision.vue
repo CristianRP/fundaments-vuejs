@@ -28,19 +28,27 @@ export default {
   },
   methods: {
     async getAnswer() {
-      this.answer = 'Thinking...'
+      try {
+        this.answer = 'Thinking...'
 
-      const { answer, image } = await fetch('https://yesno.wtf/api').then( response => response.json())
+        const { answer, image } = await fetch('https://yesno.wtf/api').then( response => response.json())
 
-      this.answer = answer
-      this.img = image
-      console.log(answer);
+        this.answer = answer
+        this.img = image
+        console.log(answer);
+      } catch (error) {
+        console.log(error);
+        this.answer = 'Can not load the API'
+        this.img = null
+      }
     }
   },
   watch: {
     question(value, oldValue) {
 
       this.isValidQuestion = false
+
+      console.log({ value });
 
       if ( !value.includes('?') ) return
 

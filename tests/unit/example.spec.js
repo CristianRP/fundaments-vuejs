@@ -1,12 +1,17 @@
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+describe('Example Component', () => {
+  test('Should be greather than 10', () => {
+    // Arrange
+    let value = 8;
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
-  })
-})
+    // Act
+    value = value + 3
+
+    // Assert
+    // if( value > 10 ) {
+    //   // pato
+    // } else {
+    //   throw `${value} is less than 10`
+    // }
+    expect(value).toBeGreaterThan(10)
+  });
+});
